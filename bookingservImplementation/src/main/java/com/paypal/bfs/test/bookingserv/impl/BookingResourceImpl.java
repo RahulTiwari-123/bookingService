@@ -2,11 +2,13 @@ package com.paypal.bfs.test.bookingserv.impl;
 
 import com.paypal.bfs.test.bookingserv.api.BookingResource;
 import com.paypal.bfs.test.bookingserv.api.model.Booking;
+import com.paypal.bfs.test.bookingserv.filter.BookingValidator;
 import com.paypal.bfs.test.bookingserv.service.BookingService;
 import com.paypal.bfs.test.bookingserv.vo.BookingVO;
 import com.paypal.bfs.test.bookingserv.service.impl.BookingServiceImpl;
 import exception.BookingAlreadyExistsException;
 import exception.BookingNotFoundException;
+import exception.InvalidRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,13 +19,21 @@ import java.util.List;
 public class BookingResourceImpl implements BookingResource {
 
     BookingService bookingService;
+    BookingValidator bookingValidator;
 
-    public BookingResourceImpl(BookingService bookingService){
+    public BookingResourceImpl(BookingService bookingService, BookingValidator bookingValidator){
         this.bookingService = bookingService;
+        this.bookingValidator=bookingValidator;
     }
 
     @Override
     public ResponseEntity<Booking> create(Booking booking) {
+        try {
+            bookingValidator.validateBookingRequest(booking);
+        }catch(InvalidRequestException ire){
+            throw ire;
+        }
+
         BookingVO response;
         try {
             response = bookingService.createBooking(booking);
