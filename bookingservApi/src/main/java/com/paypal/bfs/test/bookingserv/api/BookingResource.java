@@ -4,6 +4,8 @@ import com.paypal.bfs.test.bookingserv.api.model.Booking;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public interface BookingResource {
     /**
      * Create {@link Booking} resource
@@ -21,7 +23,7 @@ public interface BookingResource {
     @RequestMapping(value = "/v1/bfs/booking/{bookingId}", method = RequestMethod.GET)
     ResponseEntity<Booking> find(@PathVariable Integer bookingId);
 
-   // @RequestMapping(value = "/v1/bfs/booking/", method = RequestMethod.GET)
-    //ResponseEntity<Booking> findAll(@RequestParam String fromPage, @RequestParam Integer pageSize);
+   @RequestMapping(value = "/v1/bfs/booking/", method = RequestMethod.GET)
+   ResponseEntity<List<Booking>> findAll();
 
 }

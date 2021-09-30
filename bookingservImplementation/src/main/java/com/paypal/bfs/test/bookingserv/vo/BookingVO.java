@@ -14,8 +14,9 @@ public class BookingVO implements Serializable {
     private Integer id;
     @Column(unique = true)
     private Integer bookingId;
-    private   String first_name;
-    private    String  last_name;
+
+    private String first_name;
+    private String  last_name;
     private Date date_of_birth;
     private Date    checkin_datetime;
     private Date    checkout_datetime;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BookingService {
 
-    public BookingVO creatingBooking(Booking booking);
+    public BookingVO createBooking(Booking booking);
     public Booking findBooking(Integer id);
     public List<Booking> findAllBookings();
 }
