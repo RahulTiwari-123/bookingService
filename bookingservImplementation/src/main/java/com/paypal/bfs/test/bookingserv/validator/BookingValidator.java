@@ -1,10 +1,9 @@
-package com.paypal.bfs.test.bookingserv.filter;
+package com.paypal.bfs.test.bookingserv.validator;
 
 import com.paypal.bfs.test.bookingserv.api.model.Booking;
 import exception.InvalidRequestException;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Component
@@ -24,6 +23,10 @@ public class BookingValidator {
             throw new InvalidRequestException("checkin/out date is null/invalid");
         if(booking.getTotalPrice() == null || booking.getTotalPrice()<=0)
             throw new InvalidRequestException("total price is null or less than 0");
+        if(booking.getDeposit() == null || booking.getDeposit()<=0)
+            throw new InvalidRequestException("In correct deposit value");
+        if(booking.getAddress() == null || booking.getAddress().getCity() == null || booking.getAddress().getLine1()==null || booking.getAddress().getZipcode() == null)
+            throw new InvalidRequestException("In correct or empty address");
 
         return true;
     }

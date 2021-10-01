@@ -27,12 +27,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "date_of_birth",
     "checkin_datetime",
     "checkout_datetime",
-    "total_price"
+    "total_price",
+    "deposit",
+    "address"
 })
 public class Booking {
 
     /**
      * Booking id
+     * (Required)
      * 
      */
     @JsonProperty("id")
@@ -86,11 +89,21 @@ public class Booking {
     @JsonProperty("total_price")
     @JsonPropertyDescription("Total Price")
     private Integer totalPrice;
+    /**
+     * Deposit
+     * 
+     */
+    @JsonProperty("deposit")
+    @JsonPropertyDescription("Deposit")
+    private Integer deposit;
+    @JsonProperty("address")
+    private Address address;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * Booking id
+     * (Required)
      * 
      */
     @JsonProperty("id")
@@ -100,6 +113,7 @@ public class Booking {
 
     /**
      * Booking id
+     * (Required)
      * 
      */
     @JsonProperty("id")
@@ -227,6 +241,34 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * Deposit
+     * 
+     */
+    @JsonProperty("deposit")
+    public Integer getDeposit() {
+        return deposit;
+    }
+
+    /**
+     * Deposit
+     * 
+     */
+    @JsonProperty("deposit")
+    public void setDeposit(Integer deposit) {
+        this.deposit = deposit;
+    }
+
+    @JsonProperty("address")
+    public Address getAddress() {
+        return address;
+    }
+
+    @JsonProperty("address")
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -268,6 +310,14 @@ public class Booking {
         sb.append("totalPrice");
         sb.append('=');
         sb.append(((this.totalPrice == null)?"<null>":this.totalPrice));
+        sb.append(',');
+        sb.append("deposit");
+        sb.append('=');
+        sb.append(((this.deposit == null)?"<null>":this.deposit));
+        sb.append(',');
+        sb.append("address");
+        sb.append('=');
+        sb.append(((this.address == null)?"<null>":this.address));
         sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');

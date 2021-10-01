@@ -2,7 +2,9 @@ com/paypal/bfs/test/bookingserv/impl/BookingResourceImpl.class
 com/paypal/bfs/test/bookingserv/BookingServApplication.class
 com/paypal/bfs/test/bookingserv/vo/BookingVO.class
 exception/BookingAlreadyExistsException.class
-com/paypal/bfs/test/bookingserv/service/imp/BookingServiceImp.class
 com/paypal/bfs/test/bookingserv/dao/BookingDao.class
+com/paypal/bfs/test/bookingserv/validator/BookingValidator.class
 com/paypal/bfs/test/bookingserv/service/BookingService.class
+exception/InvalidRequestException.class
 exception/BookingNotFoundException.class
+com/paypal/bfs/test/bookingserv/service/impl/BookingServiceImpl.class
